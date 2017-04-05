@@ -294,48 +294,41 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <h1 class="page-header">Budget Manager</h1>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="estimated">Estimated Expenses</label>
-                                <input type="number" name = "estimated" width="30"/>
-                            </div> 
-                            <div class="form-group">  
-                                <table id="expensetable" class="display" border="1" cellspacing="0" width="100%">
-                                    <caption>Expenses History</caption>
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Task List
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Expenses</th>
+                                            <th>#</th>
+                                            <th>Tasks</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td><input type="number" id="row1" name="row-1-age" value="0"></td>
+                                        <tr onclick="document.location = 'editbudget.html';">
+                                            <td>1</td>
+                                            <td>Drivers</td>
                                         </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td><input type="number" id="row1" name="row-1-age" value="0"></td>
+                                        <tr onclick="document.location = 'editbudget.html';">
+                                            <td>2</td>
+                                            <td>Snack Bringers</td>
                                         </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td><input type="number" id="row1" name="row-1-age" value="0"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td><input type="number" id="row1" name="row-1-age" value="0"></td>
+                                        <tr onclick="document.location = 'editbudget.html';">
+                                            <td>3</td>
+                                            <td>Table Setup</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="form-group"> 
-                                <button type="submit" class="btn btn-default">Submit</button>
-                            </div> 
-                            <div class="form-group">  
-                                <label for="estimated">Total Expenses</label>
-                                <input type="number" name = "estimated" width="30"/>
-                            </div>   
-                        </form>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
