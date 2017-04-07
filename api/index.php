@@ -1,15 +1,5 @@
 <?
-    if( isset( $_SERVER['CONTEXT_DOCUMENT_ROOT'] ) && $_SERVER['CONTEXT_DOCUMENT_ROOT'] )
-        $GLOBALS['webroot'] = $_SERVER['CONTEXT_DOCUMENT_ROOT'];
-    elseif( isset( $_SERVER['DOCUMENT_ROOT'] ) && $_SERVER['DOCUMENT_ROOT'] )
-        $GLOBALS['webroot'] = $_SERVER['DOCUMENT_ROOT'];
-
-    require_once( "{$GLOBALS['webroot']}/vendor/autoload.php" );
-    require_once( "{$GLOBALS['webroot']}/lib/constants.php" );
-    require_once( "{$GLOBALS['webroot']}/lib/postgres.php" );
-    require_once( "{$GLOBALS['webroot']}/lib/api_controller.php" );
-
-    get_or_connect_to_db();
+    require_once( "{$GLOBALS['webroot']}/lib/api_lib.php" );
 
     $config = [
         'settings' => [
