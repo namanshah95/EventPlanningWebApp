@@ -25,11 +25,19 @@
         $firebase_ids_str = implode( ',', $firebase_ids );
 
         $query = <<<SQL
-select ext_firebase_id,
-       entity
-  from tb_entity
- where ext_firebase_id in ($firebase_ids_str)
+  select count(*) over () as total,
+         ext_firebase_id,
+         entity
+    from tb_entity
+   where ext_firebase_id in ($firebase_ids_str)
+order by entity
 SQL;
+
+        if( array_key_exists( 'limit', $params ) )
+            $query .= " limit {$params['limit']} ";
+
+        if( array_key_exists( 'offset', $params ) )
+            $query .= " offset {$params['offset']} ";
 
         $resource = query_execute( $query );
 

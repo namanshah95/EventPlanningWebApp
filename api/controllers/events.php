@@ -12,7 +12,8 @@
         $params = $request->getQueryParams();
 
         $query = <<<SQL
-select event,
+select count(*) over () as total,
+       event,
        name,
        start_time,
        end_time,
@@ -29,13 +30,27 @@ SQL;
             'created'
         ];
 
+        $limit  = '';
+        $offset = '';
+
         foreach( $params as $name => $value )
         {
-            if( !in_array( $name, $valid_fields ) )
-                return invalid_field_error( $response, $name );
+            if( $name == 'limit' )
+                $limit = " limit $value ";
+            elseif( $name == 'offset' )
+                $offset = " offset $value ";
+            else
+            {
+                if( !in_array( $name, array_keys( $valid_fields ) ) )
+                    return invalid_field_error( $response, $name );
 
-            $query .= " and $name = ?$name?";
+                $query .= " and {$valid_fields[$name]} = ?$name?";
+            }
         }
+
+        $query .= ' order by event';
+        $query .= $limit;
+        $query .= $offset;
 
         return api_fetch_all( $response, $query, $params );
     }
@@ -191,29 +206,29 @@ SQL;
     {
         $event  = $request->getAttribute( 'event' );
         $params = [ 'event' => $event ];
-        
+
         begin_transaction();
-        
+
         $query = <<<SQL
 delete from tb_event_needed_role
       where event = ?event?
 SQL;
 
         $resource = query_execute( $query, $params );
-        
+
         if( !query_success( $resource ) )
         {
             rollback_transaction();
             return database_error( $response );
         }
-        
+
         $query = <<<SQL
 delete from tb_event_entity_role
       where event = ?event?
 SQL;
 
         $resource = query_execute( $query, $params );
-        
+
         if( !query_success( $resource ) )
         {
             rollback_transaction();

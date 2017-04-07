@@ -38,7 +38,7 @@ function populate_needed_roles_table( data, pagination )
         );
 
         row.click( function() {
-            $.featherlight( '/planner/editbudget.php?event=' + TEST_EVENT );
+            $.featherlight( '/planner/modal/edit_budget.php?event=' + TEST_EVENT );
         });
 
         needed_roles_tbody.append( row );

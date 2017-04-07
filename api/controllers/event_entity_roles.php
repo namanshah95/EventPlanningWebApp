@@ -34,7 +34,8 @@ with tt_owner as
      where eer.event = ?event?
        and eer.role = ?ROLE_OWNER?
 )
-select eer.event_entity_role,
+select count(*) over () as total,
+       eer.event_entity_role,
        eer.event,
        e.name as event_name,
        eer.entity,
@@ -59,13 +60,27 @@ SQL;
             'estimated_budget'  => 'eer.estimated_budget'
         ];
 
+        $limit  = '';
+        $offset = '';
+
         foreach( $params as $name => $value )
         {
-            if( !in_array( $name, array_keys( $valid_fields ) ) )
-                return invalid_field_error( $response, $name );
+            if( $name == 'limit' )
+                $limit = " limit $value ";
+            elseif( $name == 'offset' )
+                $offset = " offset $value ";
+            else
+            {
+                if( !in_array( $name, array_keys( $valid_fields ) ) )
+                    return invalid_field_error( $response, $name );
 
-            $query .= " and {$valid_fields[$name]} = ?$name?";
+                $query .= " and {$valid_fields[$name]} = ?$name?";
+            }
         }
+
+        $query .= ' order by eer.event_entity_role';
+        $query .= $limit;
+        $query .= $offset;
 
         $params['event']      = $event;
         $params['ROLE_OWNER'] = constant( 'ROLE_OWNER' );
@@ -97,7 +112,8 @@ with tt_owner as
      where eer.event = ?event?
        and eer.role = ?ROLE_OWNER?
 )
-select eer.event_entity_role,
+select count(*) over () as total,
+       eer.event_entity_role,
        eer.event,
        e.name as event_name,
        eer.entity,
@@ -113,7 +129,14 @@ select eer.event_entity_role,
     on eer.entity <> tt.entity
  where eer.event = ?event?
    and eer.entity = ?guest?
+order by eer.event_entity_role
 SQL;
+
+        if( array_key_exists( 'limit', $params ) )
+            $query .= " limit {$params['limit']} ";
+
+        if( array_key_exists( 'offset', $params ) )
+            $query .= " offset {$params['offset']} ";
 
         return api_fetch_all( $response, $query, $params );
     }
@@ -223,7 +246,8 @@ with tt_owner as
      where eer.event = ?event?
        and eer.role = ?ROLE_OWNER?
 )
-select eer.event_entity_role,
+select count(*) over () as total,
+       eer.event_entity_role,
        eer.event,
        e.name as event_name,
        eer.entity,
@@ -248,13 +272,27 @@ SQL;
             'estimated_budget'  => 'eer.estimated_budget'
         ];
 
+        $limit  = '';
+        $offset = '';
+
         foreach( $params as $name => $value )
         {
-            if( !in_array( $name, array_keys( $valid_fields ) ) )
-                return invalid_field_error( $response, $name );
+            if( $name == 'limit' )
+                $limit = " limit $value ";
+            elseif( $name == 'offset' )
+                $offset = " offset $value ";
+            else
+            {
+                if( !in_array( $name, array_keys( $valid_fields ) ) )
+                    return invalid_field_error( $response, $name );
 
-            $query .= " and {$valid_fields[$name]} = ?$name?";
+                $query .= " and {$valid_fields[$name]} = ?$name?";
+            }
         }
+
+        $query .= ' order by eer.event_entity_role';
+        $query .= $limit;
+        $query .= $offset;
 
         $params['event']      = $event;
         $params['ROLE_OWNER'] = constant( 'ROLE_OWNER' );
@@ -268,7 +306,8 @@ SQL;
         $params = $request->getQueryParams();
 
         $query  = <<<SQL
-select eer.event_entity_role,
+select count(*) over () as total,
+       eer.event_entity_role,
        eer.event,
        e.name as event_name,
        eer.entity,
@@ -291,13 +330,27 @@ SQL;
             'estimated_budget'  => 'eer.estimated_budget'
         ];
 
+        $limit  = '';
+        $offset = '';
+
         foreach( $params as $name => $value )
         {
-            if( !in_array( $name, array_keys( $valid_fields ) ) )
-                return invalid_field_error( $response, $name );
+            if( $name == 'limit' )
+                $limit = " limit $value ";
+            elseif( $name == 'offset' )
+                $offset = " offset $value ";
+            else
+            {
+                if( !in_array( $name, array_keys( $valid_fields ) ) )
+                    return invalid_field_error( $response, $name );
 
-            $query .= " and {$valid_fields[$name]} = ?$name?";
+                $query .= " and {$valid_fields[$name]} = ?$name?";
+            }
         }
+
+        $query .= ' order by eer.event_entity_role';
+        $query .= $limit;
+        $query .= $offset;
 
         $params['entity'] = $entity;
         return api_fetch_all( $response, $query, $params );
@@ -350,13 +403,13 @@ SQL;
 
         return $retval;
     }
-    
+
     function delete_role_from_guest( $request, $response, $args )
     {
         $event  = $request->getAttribute( 'event' );
         $entity = $request->getAttribute( 'entity' );
         $role   = $request->getAttribute( 'role' );
-        
+
         $params = [
             'event'  => $event,
             'entity' => $guest,
@@ -371,6 +424,6 @@ delete from tb_event_entity_role
   returning event_entity_role
 SQL;
 
-        return api_fetch_all( $response, $query, $params ); 
+        return api_fetch_all( $response, $query, $params );
     }
 ?>

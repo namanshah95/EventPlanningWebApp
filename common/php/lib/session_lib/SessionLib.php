@@ -1,4 +1,6 @@
 <?
+    lib_include( 'http_lib' );
+
     class SessionLib
     {
         private static $sessionStarted    = false;
@@ -114,24 +116,7 @@
                     self::set( 'user_entity.entity', -1 );
                 elseif( $sessionMember != -1 )
                 {
-                    $req = new HttpRequest( "{$GLOBALS['webroot']}/api/entities/$sessionMember" );
-                    
-                    try
-                    {
-                        $req->send();
-                        
-                        if( $req->getResponseCode() == constant( 'HTTP_OK' ) )
-                            $entity = json_decode( $req->getResponseBody() );
-                        else
-                            error_log( 'Session registration invoked HTTP code ' . $req->getResponseCode() );
-                    }
-                    catch( HttpException $e )
-                    {
-                        error_log( $e );
-                    }
-                     
-                    error_log( print_r( $entity, true ) );
-
+                    $entity = json_decode( get_http( "{$GLOBALS['webroot']}/api/entities/$sessionMember" ), true );
                     SessionLib::set( 'user_entity.Name',  $entity['Name'] );
                     SessionLib::set( 'user_entity.Email', $entity['Email']   );
                 }

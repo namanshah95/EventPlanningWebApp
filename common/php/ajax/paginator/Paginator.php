@@ -1,11 +1,13 @@
 <?
     lib_include( 'ajax_lib' );
+    lib_include( 'http_lib' );
 
     abstract class Paginator
     {
         protected $limit;
         protected $offset;
         protected $requestData;
+        protected $apiBase;
 
         public function __construct( $requestData )
         {
@@ -18,6 +20,9 @@
                           : 0;
 
             $this->requestData = $requestData;
+
+            $this->apiBase = "http://planmything.tech/api";
+            // $this->apiBase = $GLOBALS['webroot']/api;
         }
 
         abstract protected function getData();

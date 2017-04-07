@@ -11,7 +11,8 @@
     {
         $params = $request->getQueryParams();
         $query  = <<<SQL
-select role,
+select count(*) over () as total,
+       role,
        name,
        description
   from tb_role
@@ -20,13 +21,27 @@ SQL;
 
         $valid_fields = [ 'role', 'name', 'description' ];
 
+        $limit  = '';
+        $offset = '';
+
         foreach( $params as $name => $value )
         {
-            if( !in_array( $name, $valid_fields ) )
-                return invalid_field_error( $response, $name );
+            if( $name == 'limit' )
+                $limit = " limit $value ";
+            elseif( $name == 'offset' )
+                $offset = " offset $value ";
+            else
+            {
+                if( !in_array( $name, array_keys( $valid_fields ) ) )
+                    return invalid_field_error( $response, $name );
 
-            $query .= " and $name = ?$name?";
+                $query .= " and {$valid_fields[$name]} = ?$name?";
+            }
         }
+
+        $query .= ' order by role';
+        $query .= $limit;
+        $query .= $offset;
 
         return api_fetch_all( $response, $query, $params );
     }
