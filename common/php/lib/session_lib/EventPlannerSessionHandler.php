@@ -6,7 +6,7 @@
         'delete_stale_entity_sessions'
     );
 
-    class SessionHandler implements SessionHandlerInterface
+    class EventPlannerSessionHandler implements SessionHandlerInterface
     {
         private $dbHandle;
         private $cookie;

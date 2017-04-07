@@ -1,6 +1,6 @@
 <?
     require_once( "{$GLOBALS[WEBROOT]}/common/php/lib/session_lib/SessionLib.php" );
-    require_once( "{$GLOBALS[WEBROOT]}/common/php/lib/session_lib/SessionHandler.php" );
+    require_once( "{$GLOBALS[WEBROOT]}/common/php/lib/session_lib/EventPlannerSessionHandler.php" );
 
     db_include( 'get_entity_by_login_credentials' );
 
@@ -10,7 +10,7 @@
 
         if( !$handler_set )
         {
-            $session_handler = new SessionHandler();
+            $session_handler = new EventPlannerSessionHandler();
             session_set_save_handler( $session_handler, true );
             $handler_set = true;
         }

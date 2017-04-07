@@ -2,10 +2,11 @@
     namespace event_entity_roles;
 
     /* EVENT -> GUEST */
-    $API->get( '/event/{event}/guests/',           'event_entity_roles\get_event_guests'        );
-    $API->get( '/event/{event}/guests/{guest}',    'event_entity_roles\get_event_guest'         );
-    $API->post( '/event/{event}/guests/',          'event_entity_roles\add_guest_to_event'      );
-    $API->delete( '/event/{event}/guests/{guest}', 'event_entity_roles\delete_guest_from_event' );
+    $API->get( '/event/{event}/guests/',                        'event_entity_roles\get_event_guests'        );
+    $API->get( '/event/{event}/guests/{guest}',                 'event_entity_roles\get_event_guest'         );
+    $API->post( '/event/{event}/guests/',                       'event_entity_roles\add_guest_to_event'      );
+    $API->delete( '/event/{event}/guests/{guest}',              'event_entity_roles\delete_guest_from_event' );
+    $API->delete( '/event/{event}/guests/{guest}/roles/{role}', 'event_entity_roles\delete_role_from_guest'  );
 
     /* EVENT -> OWNER */
     $API->get( '/event/{event}/owner/', 'event_entity_roles\get_event_owner' );
@@ -348,5 +349,28 @@ SQL;
             return object_not_found_error( $response, 'tb_event_entity_role', $role );
 
         return $retval;
+    }
+    
+    function delete_role_from_guest( $request, $response, $args )
+    {
+        $event  = $request->getAttribute( 'event' );
+        $entity = $request->getAttribute( 'entity' );
+        $role   = $request->getAttribute( 'role' );
+        
+        $params = [
+            'event'  => $event,
+            'entity' => $guest,
+            'role'   => $role
+        ];
+
+        $query = <<<SQL
+delete from tb_event_entity_role
+      where event  = ?event?
+        and entity = ?entity?
+        and role   = ?role?
+  returning event_entity_role
+SQL;
+
+        return api_fetch_all( $response, $query, $params ); 
     }
 ?>

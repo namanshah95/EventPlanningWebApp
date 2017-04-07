@@ -191,6 +191,35 @@ SQL;
     {
         $event  = $request->getAttribute( 'event' );
         $params = [ 'event' => $event ];
+        
+        begin_transaction();
+        
+        $query = <<<SQL
+delete from tb_event_needed_role
+      where event = ?event?
+SQL;
+
+        $resource = query_execute( $query, $params );
+        
+        if( !query_success( $resource ) )
+        {
+            rollback_transaction();
+            return database_error( $response );
+        }
+        
+        $query = <<<SQL
+delete from tb_event_entity_role
+      where event = ?event?
+SQL;
+
+        $resource = query_execute( $query, $params );
+        
+        if( !query_success( $resource ) )
+        {
+            rollback_transaction();
+            return database_error( $response );
+        }
+
         $query  = <<<SQL
 delete from tb_event
       where event = ?event?
@@ -201,6 +230,8 @@ SQL;
 
         if( $retval === null )
             return object_not_found_error( $response, 'tb_event', $event );
+
+        commit_transaction();
 
         return $retval;
     }

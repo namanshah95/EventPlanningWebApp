@@ -11,9 +11,9 @@
         $GLOBALS['webroot'] = $_SERVER['DOCUMENT_ROOT'];
 
     // Require the necessary includes
-    require_once( 'common/php/constants.php' );
-    require_once( 'common/php/include.php' );
-    require_once( "{$GLOBALS[WEBROOT]}/vendor/autoload.php" );
+    require_once( "{$GLOBALS['webroot']}/common/php/constants.php" );
+    require_once( "{$GLOBALS['webroot']}/common/php/include.php" );
+    require_once( "{$GLOBALS['webroot']}/vendor/autoload.php" );
 
     lib_include( 'db_lib' );
     lib_include( 'session_lib' );
@@ -36,7 +36,7 @@
             lib_include( 'ajax_lib' );
             require_once( $requested_page );
         }
-        else( access_allowed( $requested_page ) )
+        else
             require_once( $requested_page );
     }
     else
