@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Event Planning</a>
+                <a class="navbar-brand" href="index.php">Event Planning</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -250,7 +250,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -263,22 +263,22 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="home.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                         </li>
                         <li>
-                            <a href="guest.html"><i class="fa fa-user fa-fw"></i> Guest</a>
+                            <a href="guest.php"><i class="fa fa-user fa-fw"></i> Guest</a>
                         </li>
                         <li>
-                            <a href="task.html"><i class="fa fa-tasks fa-fw"></i> Task Manager</a>
+                            <a href="task.php"><i class="fa fa-tasks fa-fw"></i> Task Manager</a>
                         </li>
                         <li>
-                            <a href="budget.html"><i class="fa fa-money fa-fw"></i> Budget Manager</a>
+                            <a href="budget.php"><i class="fa fa-money fa-fw"></i> Budget Manager</a>
                         </li>
                         <li>
-                            <a href="messages.html"><i class="fa fa-commenting-o fa-fw"></i> Messages</a>
+                            <a href="messages.php"><i class="fa fa-commenting-o fa-fw"></i> Messages</a>
                         </li>
                         <li>
-                            <a href="login.html">Login Page</a>
+                            <a href="login.php">Login Page</a>
                         </li>            
                     </ul>
                 </div>
@@ -347,7 +347,7 @@
                                 <input type="button" id="rightall" value=">>" />
                             </body>
                             <form>
-                                <button onclick="location.href='task.html'" type="button">back</button>
+                                <button onclick="location.href='task.php'" type="button">back</button>
                             </form>
                     </div>
                     <!-- /.col-lg-12 -->

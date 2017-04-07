@@ -52,15 +52,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr onclick="document.location = 'home.html';">
+                                        <tr onclick="document.location = 'index.php';">
                                             <td>1</td>
                                             <td>Mary Birthday Party</td>
                                         </tr>
-                                        <tr onclick="document.location = 'home.html';">
+                                        <tr onclick="document.location = 'index.php';">
                                             <td>2</td>
                                             <td>Jack Birthday Party</td>
                                         </tr>
-                                        <tr onclick="document.location = 'home.html';">
+                                        <tr onclick="document.location = 'index.php';">
                                             <td>3</td>
                                             <td>Cathy Birthyday Party</td>
                                         </tr>

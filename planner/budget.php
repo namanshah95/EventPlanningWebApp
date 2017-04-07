@@ -30,6 +30,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="stylesheet" type="text/css" href="/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="/featherlight.min.css" />
 </head>
 
 <body>
@@ -45,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Event Planning</a>
+                <a class="navbar-brand" href="index.php">Event Planning</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -250,7 +252,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -263,23 +265,23 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="home.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                         </li>
                         <li>
-                            <a href="guest.html"><i class="fa fa-user fa-fw"></i> Guest</a>
+                            <a href="guest.php"><i class="fa fa-user fa-fw"></i> Guest</a>
                         </li>
                         <li>
-                            <a href="task.html"><i class="fa fa-tasks fa-fw"></i> Task Manager</a>
+                            <a href="task.php"><i class="fa fa-tasks fa-fw"></i> Task Manager</a>
                         </li>
                         <li>
-                            <a href="budget.html"><i class="fa fa-money fa-fw"></i> Budget Manager</a>
+                            <a href="budget.php"><i class="fa fa-money fa-fw"></i> Budget Manager</a>
                         </li>
                         <li>
-                            <a href="messages.html"><i class="fa fa-commenting-o fa-fw"></i> Messages</a>
+                            <a href="messages.php"><i class="fa fa-commenting-o fa-fw"></i> Messages</a>
                         </li>
                         <li>
-                            <a href="login.html">Login Page</a>
-                        </li>            
+                            <a href="login.php">Login Page</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -300,6 +302,8 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                            <div id="pagination_controls" class="paginationjs paginationjs-big"></div>
+                            <br />
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -308,19 +312,8 @@
                                             <th>Tasks</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr onclick="document.location = 'editbudget.html';">
-                                            <td>1</td>
-                                            <td>Drivers</td>
-                                        </tr>
-                                        <tr onclick="document.location = 'editbudget.html';">
-                                            <td>2</td>
-                                            <td>Snack Bringers</td>
-                                        </tr>
-                                        <tr onclick="document.location = 'editbudget.html';">
-                                            <td>3</td>
-                                            <td>Table Setup</td>
-                                        </tr>
+                                    <tbody id="needed_roles_tbody">
+                                        <!-- Contents of table are populated in budget.js -->
                                     </tbody>
                                 </table>
                             </div>
@@ -353,6 +346,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
+    <script src="/planner/js/budget.js"></script>
+    <? js_include( 'pagination', 'featherlight', 'error.js', 'pagination_lib.js' ); ?>
 </body>
 
 </html>

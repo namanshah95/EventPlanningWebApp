@@ -79,8 +79,8 @@
                 session_id( $newSessionID );
                 session_start();
 
-                self::unset( 'obsolete' );
-                self::unset( 'expires'  );
+                self::deset( 'obsolete' );
+                self::deset( 'expires'  );
             }
         }
 
@@ -211,7 +211,7 @@
             }
         }
 
-        public static function unset( $key )
+        public static function deset( $key )
         {
             if( self::$sessionStarted )
             {
@@ -229,13 +229,13 @@
                 }
 
                 $subkey = array_shift( $parsedKey );
-                unset( $session[$subkey] );
+                deset( $session[$subkey] );
 
                 return true;
             }
             else
             {
-                error_log( "Tried to unset \$_SESSION[$key] before session started!" );
+                error_log( "Tried to deset \$_SESSION[$key] before session started!" );
                 return false;
             }
         }

@@ -12,7 +12,8 @@
         $event  = $request->getAttribute( 'event' );
         $params = $request->getQueryParams();
         $query  = <<<SQL
-select enr.event_needed_role,
+select count(*) over () as total,
+       enr.event_needed_role,
        enr.event,
        enr.needed_role,
        r.name as needed_role_name,
