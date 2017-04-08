@@ -26,6 +26,7 @@ function populate_needed_roles_table( data, pagination )
 
     $.each( data, function( i, event_needed_role ) {
         var event_needed_role_pk_val = event_needed_role['event_needed_role'];
+        var needed_role_pk = event_needed_role['needed_role']
 
         var event_needed_role_pk = $( '<td>' ).text( i + 1 );
         var role_name            = $( '<td>' ).text( event_needed_role['needed_role_name'] );
@@ -38,7 +39,7 @@ function populate_needed_roles_table( data, pagination )
         );
 
         row.click( function() {
-            $.featherlight( '/planner/modal/edit_budget.php?event=' + TEST_EVENT );
+            $.featherlight( '/planner/modal/edit_budget.php?event=' + TEST_EVENT + "&needed_role=" + needed_role_pk );
         });
 
         needed_roles_tbody.append( row );

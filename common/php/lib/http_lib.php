@@ -14,4 +14,9 @@
         curl_close( $ch );
         return $retval;
     }
+
+    function get_http_json( $url )
+    {
+        return json_decode( get_http( $url ), true );
+    }
 ?>

@@ -1,3 +1,16 @@
+<?
+    lib_include( 'http_lib' );
+
+    $event = $_REQUEST['event'];
+    $role  = $_REQUEST['needed_role'];
+
+    $data = get_http_json( "http://planmything.tech/api/event/$event/roles/$role" );
+
+    if( !empty( $data ) )
+        $estimated_expenses = $data['estimated_budget'];
+    else
+        $estimated_expenses = '';
+?>
 <div id="wrapper">
     <!-- Page Content -->
     <div id="page-wrapper">
@@ -8,7 +21,7 @@
                     <form role="form">
                         <div class="form-group">
                             <label for="estimated">Estimated Expenses</label>
-                            <input type="number" name = "estimated" width="30" id="estimated_expenses"/>
+                            <input type="number" name = "estimated" width="30" id="estimated_expenses" value="<?= $estimated_expenses ?>"/>
                         </div>
                         <div class="form-group">
                             <div class="panel panel-default">
