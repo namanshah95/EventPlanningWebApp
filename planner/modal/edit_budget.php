@@ -8,7 +8,7 @@
                     <form role="form">
                         <div class="form-group">
                             <label for="estimated">Estimated Expenses</label>
-                            <input type="number" name = "estimated" width="30"/>
+                            <input type="number" name = "estimated" width="30" id="estimated_expenses"/>
                         </div>
                         <div class="form-group">
                             <div class="panel panel-default">

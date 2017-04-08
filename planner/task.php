@@ -30,6 +30,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="stylesheet" type="text/css" href="/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="/featherlight.min.css" />
 </head>
 
 <body>
@@ -279,7 +281,7 @@
                         </li>
                         <li>
                             <a href="login.php">Login Page</a>
-                        </li>            
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -304,6 +306,8 @@
                             </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                            <div id="pagination_controls" class="paginationjs paginationjs-big"></div>
+                            <br />
                             <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
@@ -312,7 +316,8 @@
                                             <th>Edit Task</th>
                                         </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="task_list_tbody">
+                                    <!--
                                     <tr id="row1">
                                         <td id="name_row1">Setup</td>
                                         <td>
@@ -347,6 +352,7 @@
                                         <td><input type="text" id="new_name"></td>
                                         <td><input type="button" class="add" onclick="add_row();" value="Add New Task"></td>
                                     </tr>
+                                    -->
                                 </tbody>
                             </table>
                         </div>
@@ -381,6 +387,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
+    <script src="/planner/js/task.js"></script>
+    <? js_include( 'pagination', 'featherlight', 'error.js', 'pagination_lib.js' ); ?>
 </body>
 
 </html>
