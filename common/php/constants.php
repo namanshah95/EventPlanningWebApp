@@ -1,13 +1,15 @@
 <?
     // SQL
-    define( 'PSQL_HOST',           'localhost'     );
-    define( 'PSQL_PORT',           '5432'          );
-    define( 'PSQL_DB'  ,           'planmyth_dev'  );
-    define( 'PSQL_USER',           'planmyth_user' );
+    define( 'PSQL_HOST',           'planmything.tech' );
+    define( 'PSQL_PORT',           '5432'             );
+    define( 'PSQL_DB'  ,           'planmyth_dev'     );
+    define( 'PSQL_USER',           'planmyth_user'    );
+    define( 'PSQL_PASSWORD',       'EsVNg4EGuk'       ); // We are super fucking secure here lmao
     define( 'PSQL_CONNECT_STRING', ' host='     . constant( 'PSQL_HOST' )
                                  . ' port='     . constant( 'PSQL_PORT' )
                                  . ' dbname='   . constant( 'PSQL_DB' )
-                                 . ' user='     . constant( 'PSQL_USER' ) );
+                                 . ' user='     . constant( 'PSQL_USER' )
+                                 . ' password=' . constant( 'PSQL_PASSWORD' ) );
 
     // API errors
     define( 'HTTP_OK',                    200 );
@@ -22,7 +24,7 @@
     // Firebase credentials (100% secure trust me)
     define( 'FIREBASE_URL',     'https://event-planner-160406.firebaseio.com/' );
     define( 'FIREBASE_AUTHKEY', 'cKZjwjMSN66IYC4bC8IDYx4CqySfSKaLIXKvofsq'     );
-    
+
     // Globals
     define( 'WEBROOT',   'webroot'   );
     define( 'DB_HANDLE', 'db_handle' );
