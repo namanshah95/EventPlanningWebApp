@@ -30,6 +30,8 @@
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
+                                    <div id="edit_budget_pagination_controls" class="paginationjs"></div>
+                                    <br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover">
                                             <thead>
@@ -38,24 +40,7 @@
                                                     <th>Expenses</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td><input type="number" id="row1" name="row-1-age" value="0"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td><input type="number" id="row1" name="row-1-age" value="0"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td><input type="number" id="row1" name="row-1-age" value="0"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Cedric Kelly</td>
-                                                    <td><input type="number" id="row1" name="row-1-age" value="0"></td>
-                                                </tr>
-                                            </tbody>
+                                            <tbody id="event_entity_role_tbody"></tbody>
                                         </table>
                                     </div>
                                     <!-- /.table-responsive -->
@@ -65,7 +50,7 @@
                             <!-- /.panel -->
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" id="submit_button" class="btn btn-default">Submit</button>
                         </div>
                         <div class="form-group">
                             <label for="estimated">Total Expenses</label>
@@ -80,6 +65,10 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
-
 </div>
 <!-- /#wrapper -->
+<script src="/planner/js/modal/edit_budget.js"></script>
+<script type="text/javascript">
+    var event_pk       = <?= $_REQUEST['event'] ?>;
+    var needed_role_pk = <?= $_REQUEST['needed_role'] ?>;
+</script>

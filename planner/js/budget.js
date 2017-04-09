@@ -1,16 +1,18 @@
-$( document ).ready( initialize );
+$( document ).ready( budget_initialize );
 
 var TEST_EVENT = 14; // TODO remove this hard-coded test value
 
-var class_file = 'GetEventRolesPaginator';
-var args       = {
-    'event' : TEST_EVENT
-};
-var limit = 15;
-
-function initialize()
+function budget_initialize()
 {
+    var class_file = 'GetEventRolesPaginator';
+    var args       = {
+        'event' : TEST_EVENT
+    };
+
+    var limit = 15;
+
     pagination_init(
+        $( '#budget_pagination_controls' ),
         class_file,
         args,
         limit,
@@ -26,7 +28,7 @@ function populate_needed_roles_table( data, pagination )
 
     $.each( data, function( i, event_needed_role ) {
         var event_needed_role_pk_val = event_needed_role['event_needed_role'];
-        var needed_role_pk = event_needed_role['needed_role']
+        var needed_role_pk           = event_needed_role['needed_role'];
 
         var event_needed_role_pk = $( '<td>' ).text( i + 1 );
         var role_name            = $( '<td>' ).text( event_needed_role['needed_role_name'] );

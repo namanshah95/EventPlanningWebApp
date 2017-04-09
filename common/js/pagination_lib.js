@@ -1,13 +1,12 @@
-var pagination_controls_name = '#pagination_controls';
-var pagination_class_name    = 'paginationjs';
+var pagination_class_name = 'paginationjs';
 
-function pagination_init( pagination_class, args, limit, callback )
+function pagination_init( pagination_controls, pagination_class, args, limit, callback )
 {
-    var pagination_controls = $( pagination_controls_name );
+    var pagination_controls = pagination_controls;
     var data_source         = '/common/php/ajax/paginator/classes/' + pagination_class + '.php?'
 
     for( var key in args )
-        data_source += key + "=" + args[key];
+        data_source += key + "=" + args[key] + '&';
 
     var total_number = __pagination_get_total( data_source );
 

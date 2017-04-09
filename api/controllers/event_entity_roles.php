@@ -9,7 +9,8 @@
     $API->delete( '/event/{event}/guests/{guest}/roles/{role}', 'event_entity_roles\delete_role_from_guest'  );
 
     /* EVENT -> OWNER */
-    $API->get( '/event/{event}/owner/', 'event_entity_roles\get_event_owner' );
+    $API->get( '/event/{event}/owner/',                'event_entity_roles\get_event_owner'        );
+    $API->delete( '/event/{event}/owner/roles/{role}', 'event_entity_roles\delete_role_from_owner' );
 
     /* EVENT -> ENTITY */
     $API->post( '/event/{event}/entities/{entity}/roles/',      'event_entity_roles\add_role_to_event_entity' );
@@ -407,7 +408,7 @@ SQL;
     function delete_role_from_guest( $request, $response, $args )
     {
         $event  = $request->getAttribute( 'event' );
-        $entity = $request->getAttribute( 'entity' );
+        $guest  = $request->getAttribute( 'guest' );
         $role   = $request->getAttribute( 'role' );
 
         $params = [
@@ -424,6 +425,35 @@ delete from tb_event_entity_role
   returning event_entity_role
 SQL;
 
-        return api_fetch_all( $response, $query, $params );
+        return api_fetch_one( $response, $query, $params );
+    }
+
+    function delete_role_from_owner( $request, $response, $args )
+    {
+        $event = $request->getAttribute( 'event' );
+        $role  = $request->getAttribute( 'role' );
+
+        $params = [
+            'event'      => $event,
+            'role'       => $role,
+            'ROLE_OWNER' => constant( 'ROLE_OWNER' )
+        ];
+
+        $query = <<<SQL
+delete from tb_event_entity_role eer
+      where eer.entity = (
+              select e.entity
+                from tb_entity e
+                join tb_event_entity_role eer
+                  on e.entity = eer.entity
+               where eer.event = ?event?
+                 and eer.role = ?ROLE_OWNER?
+            )
+        and eer.event  = ?event?
+        and eer.role   = ?role?
+  returning event_entity_role
+SQL;
+
+        return api_fetch_one( $response, $query, $params );
     }
 ?>

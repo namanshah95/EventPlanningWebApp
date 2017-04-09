@@ -302,7 +302,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="pagination_controls" class="paginationjs paginationjs-big"></div>
+                            <div id="budget_pagination_controls" class="paginationjs"></div>
                             <br />
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
