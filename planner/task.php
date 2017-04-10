@@ -289,15 +289,11 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <head>
-                            <script type="text/javascript" src="../js/table_script.js"></script>
-                        </head>
                         <h1 class="page-header">Task Manager</h1>
                         <body>
                         <div class="panel panel-default">
@@ -306,7 +302,7 @@
                             </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="pagination_controls" class="paginationjs paginationjs-big"></div>
+                            <div id="task_pagination_controls" class="paginationjs"></div>
                             <br />
                             <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover">
@@ -316,44 +312,7 @@
                                             <th>Edit Task</th>
                                         </tr>
                                 </thead>
-                                <tbody id="task_list_tbody">
-                                    <!--
-                                    <tr id="row1">
-                                        <td id="name_row1">Setup</td>
-                                        <td>
-                                            <input type="button" id="edit_button1" value="Edit Name" class="edit" onclick="edit_row('1')">
-                                            <input type="button" id="edit_profile_button1" value="Edit Profile" class="edit" onclick="edit_row_profile('1')">
-                                            <input type="button" id="save_button1" value="Save" class="save name" onclick="save_row('1')">
-                                            <input type="button" value="Delete" class="delete" onclick="delete_row('1')">
-                                        </td>
-                                    </tr>
-
-                                    <tr id="row2">
-                                        <td id="name_row2">Drivers</td>
-                                        <td>
-                                            <input type="button" id="edit_button2" value="Edit Name" class="edit" onclick="edit_row('2')">
-                                            <input type="button" id="edit_profile_button2" value="Edit Profile" class="edit" onclick="edit_row_profile('2')">
-                                            <input type="button" id="save_button2" value="Save" class="save" onclick="save_row('2')">
-                                            <input type="button" value="Delete" class="delete" onclick="delete_row('2')">
-                                        </td>
-                                    </tr>
-
-                                    <tr id="row3">
-                                        <td id="name_row3">Snack Bringers</td>
-                                        <td>
-                                            <input type="button" id="edit_button3" value="Edit Name" class="edit" onclick="edit_row('3')">
-                                            <input type="button" id="edit_profile_button3" value="Edit Profile" class="edit" onclick="edit_row_profile('3')">
-                                            <input type="button" id="save_button3" value="Save" class="save" onclick="save_row('3')">
-                                            <input type="button" value="Delete" class="delete" onclick="delete_row('3')">
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><input type="text" id="new_name"></td>
-                                        <td><input type="button" class="add" onclick="add_row();" value="Add New Task"></td>
-                                    </tr>
-                                    -->
-                                </tbody>
+                                <tbody id="task_list_tbody"></tbody>
                             </table>
                         </div>
                             <!-- /.table-responsive -->
