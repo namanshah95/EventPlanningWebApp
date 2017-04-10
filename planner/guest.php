@@ -33,18 +33,6 @@
     <link rel="stylesheet" type="text/css" href="/pagination.css" />
     <link rel="stylesheet" type="text/css" href="/featherlight.min.css" />
 
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
-
 </head>
 
 <body>
@@ -65,7 +53,7 @@
                             </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="task_pagination_controls" class="paginationjs"></div>
+                            <div id="guest_pagination_controls" class="paginationjs"></div>
                             <br />
                             <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover">
@@ -94,6 +82,22 @@
 
     </div>
     <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <script src="/planner/js/guest.js"></script>
+    <? js_include( 'pagination', 'featherlight', 'error.js', 'pagination_lib.js' ); ?>
+
 </body>
 
 </html>
