@@ -95,6 +95,9 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
+    <script src="/planner/js/guest.js"></script>
+    <? js_include( 'pagination', 'featherlight', 'error.js', 'pagination_lib.js' ); ?>
+
 </body>
 
 </html>

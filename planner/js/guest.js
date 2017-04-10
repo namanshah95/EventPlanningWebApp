@@ -9,8 +9,8 @@ var args       = {
 
 var limit = 15;
 
-var edit_task_unassigned = new Set();
-var edit_task_assigned   = new Set();
+// var edit_task_unassigned = new Set();
+// var edit_task_assigned   = new Set();
 
 function task_initialize()
 {
@@ -25,7 +25,7 @@ function task_initialize()
 
 function add_new_row()
 {
-    var task_list_tbody = $( '#guest_list_tbody' );
+    var guest_list_tbody = $( '#guest_list_tbody' );
     var row             = $( '<tr id="new">' );
 
     var guest_name_input = $( '<td>' )
@@ -51,9 +51,9 @@ function create_action_set( tr, event_entity_role, entity )
     var delete_button = $( '<input type="button" value="Delete" class="delete">' );
 
 
-    delete_button.click( function() {
-        purge_role( tr, needed_role );
-    });
+    // delete_button.click( function() {
+    //     purge_role( tr, needed_role );
+    // });
 
     actions.append(
         //edit_name,
@@ -63,39 +63,39 @@ function create_action_set( tr, event_entity_role, entity )
     return actions;
 }
 
-function purge_role( tr, needed_role )
-{
-    tr.hide();
+// function purge_role( tr, needed_role )
+// {
+//     tr.hide();
 
-    $.ajax( {
-        'type'     : 'DELETE',
-        'url'      : API_BASE + '/event/' + TEST_EVENT + '/roles/' + needed_role,
-        'dataType' : 'json'
-    });
+//     $.ajax( {
+//         'type'     : 'DELETE',
+//         'url'      : API_BASE + '/event/' + TEST_EVENT + '/roles/' + needed_role,
+//         'dataType' : 'json'
+//     });
 
-    var get_url = API_BASE + '/event/' + TEST_EVENT + '/guests/?role=' + needed_role;
-    var entities = [];
+//     var get_url = API_BASE + '/event/' + TEST_EVENT + '/guests/?role=' + needed_role;
+//     var entities = [];
 
-    $.get( get_url, null, function( response, textStatus, jqXHR ) {
-        for( var record in response )
-            entities.push( record['entity'] );
-    }, 'json');
+//     $.get( get_url, null, function( response, textStatus, jqXHR ) {
+//         for( var record in response )
+//             entities.push( record['entity'] );
+//     }, 'json');
 
-    for( var entity in entities )
-    {
-        $.ajax( {
-            'type'     : 'DELETE',
-            'url'      : API_BASE + '/event/' + TEST_EVENT + '/guests/' + entity + '/roles/' + needed_role,
-            'dataType' : 'json'
-        });
-    }
-}
+//     for( var entity in entities )
+//     {
+//         $.ajax( {
+//             'type'     : 'DELETE',
+//             'url'      : API_BASE + '/event/' + TEST_EVENT + '/guests/' + entity + '/roles/' + needed_role,
+//             'dataType' : 'json'
+//         });
+//     }
+// }
 
 function populate_guest_list_table( data, pagination )
 {
-    var task_list_tbody = $( '#guest_list_tbody' );
+    var guest_list_tbody = $( '#guest_list_tbody' );
 
-    task_list_tbody.empty();
+    guest_list_tbody.empty();
 
     $.each( data, function( i, event_entity_role ) {
         var event_entity_role_pk = event_entity_role['event_entity_role'];
@@ -105,11 +105,11 @@ function populate_guest_list_table( data, pagination )
         //var actions   = create_action_set( row, event_entity_role_pk, event_entity_role['entity'] );
 
         row.append(
-            guest_name,
+            guest_name
             //actions
         );
 
-        task_list_tbody.append( row );
+        guest_list_tbody.append( row );
     });
 
     add_new_row();
