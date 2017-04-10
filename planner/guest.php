@@ -30,6 +30,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="stylesheet" type="text/css" href="/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="/featherlight.min.css" />
+
 </head>
 
 <body>
@@ -44,6 +47,30 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Guests</h1>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Guest List
+                            </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="task_pagination_controls" class="paginationjs"></div>
+                            <br />
+                            <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                        <tr>
+                                            <th>Guest Name</th>
+                                            <th>Edit Guest</th>
+                                        </tr>
+                                </thead>
+                                <tbody id="guest_list_tbody"></tbody>
+                            </table>
+                        </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
