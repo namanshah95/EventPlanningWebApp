@@ -5,8 +5,8 @@ $( document ).ready( guest_initialize );
 
 function guest_initialize()
 {
-    var class_file = "GetEventGuestsPaginator";
-    var args       = {
+    var guest_class_file = "GetEventGuestsPaginator";
+    var guest_args       = {
         'event' : SESSION_EVENT_PK
     };
 
@@ -14,52 +14,52 @@ function guest_initialize()
 
     pagination_init(
         $( '#guest_pagination_controls' ),
-        class_file,
-        args,
+        guest_class_file,
+        guest_args,
         limit,
         populate_guest_list_table
     );
 }
 
-// function add_new_row()
-// {
-//     var guest_list_tbody = $( '#guest_list_tbody' );
-//     var row             = $( '<tr id="new">' );
+function add_new_row()
+{
+    var guest_list_tbody = $( '#guest_list_tbody' );
+    var row             = $( '<tr id="new">' );
 
-//     var guest_name_input = $( '<td>' )
-//         .append( '<input type="text" id="new_name">' );
+    var guest_name_input = $( '<td>' )
+        .append( '<input type="text" id="new_name">' );
 
-//     var add_button = $( '<td> ')
-//         .append( '<input type="button" class="add" value="Add New Guest">' );
+    var add_button = $( '<td> ')
+        .append( '<input type="button" class="add" value="Add New Guest">' );
 
-//     add_button.click( create_new_guest );
+    add_button.click( create_new_guest );
 
-//     row.append(
-//         guest_name_input,
-//         add_button
-//     );
+    row.append(
+        guest_name_input,
+        add_button
+    );
 
-//     guest_list_tbody.append( row );
-// }
+    guest_list_tbody.append( row );
+}
 
-// function create_action_set( tr, event_entity_role, entity )
-// {
-//     var actions = $( '<td>' );
+function create_action_set( tr, event_entity_role, entity )
+{
+    var actions = $( '<td>' );
 
-//     var delete_button = $( '<input type="button" value="Delete" class="delete">' );
+    var delete_button = $( '<input type="button" value="Delete" class="delete">' );
 
 
-//     // delete_button.click( function() {
-//     //     purge_role( tr, needed_role );
-//     // });
+    // delete_button.click( function() {
+    //     purge_role( tr, needed_role );
+    // });
 
-//     actions.append(
-//         //edit_name,
-//         delete_button
-//     );
+    actions.append(
+        //edit_name,
+        delete_button
+    );
 
-//     return actions;
-// }
+    return actions;
+}
 
 // function purge_role( tr, needed_role )
 // {
@@ -99,24 +99,25 @@ function populate_guest_list_table( data, pagination )
         var event_entity_role_pk = event_entity_role['event_entity_role'];
         var row                  = $( '<tr>' );
 
-        var guest_name = $( '<td>' ).text( event_entity_role['entity'] );
-        //var actions   = create_action_set( row, event_entity_role_pk, event_entity_role['entity'] );
+        var guest_name     = $( '<td>' ).text( event_entity_role['entity_name'] );
+        //console.log(event_entity_role['entity_name']);
+        var actions   = create_action_set( row, event_entity_role_pk, event_entity_role['entity'] );
 
         row.append(
-            guest_name
-            //actions
+            guest_name,
+            actions
         );
 
         guest_list_tbody.append( row );
     });
 
-    //add_new_row();
+    add_new_row();
 }
 
 // function create_new_guest()
 // {
 //     var new_name  = $( '#new_name' ).val();
-//     var post_url  = 'http://planmything.tech/api/roles/';
+//     var post_url  = API_BASE + '/roles/';
 //     var post_data = { 'name' : new_name };
 
 //     var new_needed_role;
@@ -127,7 +128,7 @@ function populate_guest_list_table( data, pagination )
 //         console.log( new_needed_role );
 //     })
 //     .done( function() {
-//         post_url  = 'http://planmything.tech/api/event/' + TEST_EVENT + '/roles/';
+//         post_url  = API_BASE + '/event/' + SESSION_EVENT_PK + '/roles/';
 //         post_data = { 'needed_role' : new_needed_role };
 
 //         $.post( post_url, post_data, function( response, textStatus, jqXHR ) {
