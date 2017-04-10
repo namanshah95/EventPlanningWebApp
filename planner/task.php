@@ -32,6 +32,21 @@
 
     <link rel="stylesheet" type="text/css" href="/pagination.css" />
     <link rel="stylesheet" type="text/css" href="/featherlight.min.css" />
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <script src="/planner/js/task.js"></script>
+    <? js_include( 'pagination', 'featherlight', 'error.js', 'pagination_lib.js' ); ?>
 </head>
 
 <body>
@@ -82,21 +97,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
-
-    <script src="/planner/js/task.js"></script>
-    <? js_include( 'pagination', 'featherlight', 'error.js', 'pagination_lib.js' ); ?>
 </body>
 
 </html>

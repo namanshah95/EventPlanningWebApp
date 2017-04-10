@@ -30,6 +30,7 @@ SQL;
             'created'
         ];
 
+        $order  = ' order by ';
         $limit  = '';
         $offset = '';
 
@@ -39,6 +40,8 @@ SQL;
                 $limit = " limit $value ";
             elseif( $name == 'offset' )
                 $offset = " offset $value ";
+            elseif( $name == 'order_by' )
+                $order .= $value;
             else
             {
                 if( !in_array( $name, array_keys( $valid_fields ) ) )
@@ -48,7 +51,7 @@ SQL;
             }
         }
 
-        $query .= ' order by event';
+        $query .= $order;
         $query .= $limit;
         $query .= $offset;
 

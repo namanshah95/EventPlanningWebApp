@@ -1,12 +1,10 @@
 $( document ).ready( budget_initialize );
 
-var TEST_EVENT = 14; // TODO remove this hard-coded test value
-
 function budget_initialize()
 {
     var class_file = 'GetEventRolesPaginator';
     var args       = {
-        'event' : TEST_EVENT
+        'event' : SESSION_EVENT_PK
     };
 
     var limit = 15;
@@ -41,7 +39,7 @@ function populate_needed_roles_table( data, pagination )
         );
 
         row.click( function() {
-            $.featherlight( '/planner/modal/edit_budget.php?event=' + TEST_EVENT + "&needed_role=" + needed_role_pk );
+            $.featherlight( '/planner/modal/edit_budget.php?event=' + SESSION_EVENT_PK + "&needed_role=" + needed_role_pk );
         });
 
         needed_roles_tbody.append( row );

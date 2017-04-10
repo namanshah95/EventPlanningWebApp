@@ -1,77 +1,34 @@
+<?
+    db_include( 'get_events' );
+
+    $events = get_events( 6 );
+?>
+<script src="/ui/js/navbar_top_links.js"></script>
 <ul class="nav navbar-top-links navbar-right">
+    <li>
+        <b>
+            <? if( SessionLib::get( 'event.pk' ) !== null ): ?>
+                <span>On Event: <?= SessionLib::get( 'event.name' ) ?></span>
+            <? else: ?>
+                <span style="color: red"><b>Choose An Event &#x21E8</b></span>
+            <? endif; ?>
+        </b>
+    </li>
     <!-- /.dropdown -->
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-tasks">
+            <? foreach( $events as $event ): ?>
+                <li>
+                    <a href="#" onclick="set_session_event( <?= $event['event'] ?> );"><?= $event['name'] ?></a>
+                    <li class="divider"></li>
+                </li>
+            <? endforeach; ?>
             <li>
-                <a href="#">
-                    <div>
-                        <p>
-                            <strong>Task 1</strong>
-                            <span class="pull-right text-muted">40% Complete</span>
-                        </p>
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                <span class="sr-only">40% Complete (success)</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <p>
-                            <strong>Task 2</strong>
-                            <span class="pull-right text-muted">20% Complete</span>
-                        </p>
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                <span class="sr-only">20% Complete</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <p>
-                            <strong>Task 3</strong>
-                            <span class="pull-right text-muted">60% Complete</span>
-                        </p>
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                <span class="sr-only">60% Complete (warning)</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <p>
-                            <strong>Task 4</strong>
-                            <span class="pull-right text-muted">80% Complete</span>
-                        </p>
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                <span class="sr-only">80% Complete (danger)</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a class="text-center" href="#">
-                    <strong>See All Tasks</strong>
+                <a class="text-center" href="eventlist.php">
+                    <strong>See All Events</strong>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>

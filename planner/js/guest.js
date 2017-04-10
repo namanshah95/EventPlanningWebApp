@@ -1,19 +1,17 @@
 $( document ).ready( task_initialize );
 
-var TEST_EVENT = 14; // TODO remove this hard-coded test value
-
-var class_file = "GetEventGuestsPaginator";
-var args       = {
-    'event' : TEST_EVENT
-};
-
-var limit = 15;
-
 var edit_task_unassigned = new Set();
 var edit_task_assigned   = new Set();
 
 function task_initialize()
 {
+    var class_file = "GetEventGuestsPaginator";
+    var args       = {
+        'event' : SESSION_EVENT_PK
+    };
+
+    var limit = 15;
+
     pagination_init(
         $( '#guest_pagination_controls' ),
         class_file,
@@ -69,11 +67,11 @@ function purge_role( tr, needed_role )
 
     $.ajax( {
         'type'     : 'DELETE',
-        'url'      : API_BASE + '/event/' + TEST_EVENT + '/roles/' + needed_role,
+        'url'      : API_BASE + '/event/' + SESSION_EVENT_PK + '/roles/' + needed_role,
         'dataType' : 'json'
     });
 
-    var get_url = API_BASE + '/event/' + TEST_EVENT + '/guests/?role=' + needed_role;
+    var get_url = API_BASE + '/event/' + SESSION_EVENT_PK + '/guests/?role=' + needed_role;
     var entities = [];
 
     $.get( get_url, null, function( response, textStatus, jqXHR ) {
@@ -85,7 +83,7 @@ function purge_role( tr, needed_role )
     {
         $.ajax( {
             'type'     : 'DELETE',
-            'url'      : API_BASE + '/event/' + TEST_EVENT + '/guests/' + entity + '/roles/' + needed_role,
+            'url'      : API_BASE + '/event/' + SESSION_EVENT_PK + '/guests/' + entity + '/roles/' + needed_role,
             'dataType' : 'json'
         });
     }
@@ -129,7 +127,7 @@ function create_new_guest()
         console.log( new_needed_role );
     })
     .done( function() {
-        post_url  = 'http://planmything.tech/api/event/' + TEST_EVENT + '/roles/';
+        post_url  = 'http://planmything.tech/api/event/' + SESSION_EVENT_PK + '/roles/';
         post_data = { 'needed_role' : new_needed_role };
 
         $.post( post_url, post_data, function( response, textStatus, jqXHR ) {

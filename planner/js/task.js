@@ -1,19 +1,17 @@
 $( document ).ready( task_initialize );
 
-var TEST_EVENT = 14; // TODO remove this hard-coded test value
-
-var class_file = "GetEventRolesPaginator";
-var args       = {
-    'event' : TEST_EVENT
-};
-
-var limit = 15;
-
 var edit_task_unassigned = new Set();
 var edit_task_assigned   = new Set();
 
 function task_initialize()
 {
+    var class_file = "GetEventRolesPaginator";
+    var args       = {
+        'event' : SESSION_EVENT_PK
+    };
+
+    var limit = 15;
+
     pagination_init(
         $( '#task_pagination_controls' ),
         class_file,
@@ -53,7 +51,7 @@ function create_action_set( tr, event_needed_role, needed_role )
 
     edit_name.click( function() {
         $.featherlight(
-            "/planner/modal/edit_task.php?event=" + TEST_EVENT + "&role=" + needed_role,
+            "/planner/modal/edit_task.php?event=" + SESSION_EVENT_PK + "&role=" + needed_role,
             {
                 'beforeClose' : perform_edit_task_update // defined in edit_task.js
             }
@@ -78,11 +76,11 @@ function purge_role( tr, needed_role )
 
     $.ajax( {
         'type'     : 'DELETE',
-        'url'      : API_BASE + '/event/' + TEST_EVENT + '/roles/' + needed_role,
+        'url'      : API_BASE + '/event/' + SESSION_EVENT_PK + '/roles/' + needed_role,
         'dataType' : 'json'
     });
 
-    var get_url = API_BASE + '/event/' + TEST_EVENT + '/guests/?role=' + needed_role;
+    var get_url = API_BASE + '/event/' + SESSION_EVENT_PK + '/guests/?role=' + needed_role;
     var entities = [];
 
     $.get( get_url, null, function( response, textStatus, jqXHR ) {
@@ -94,7 +92,7 @@ function purge_role( tr, needed_role )
     {
         $.ajax( {
             'type'     : 'DELETE',
-            'url'      : API_BASE + '/event/' + TEST_EVENT + '/guests/' + entity + '/roles/' + needed_role,
+            'url'      : API_BASE + '/event/' + SESSION_EVENT_PK + '/guests/' + entity + '/roles/' + needed_role,
             'dataType' : 'json'
         });
     }
@@ -138,7 +136,7 @@ function create_new_role()
         console.log( new_needed_role );
     })
     .done( function() {
-        post_url  = API_BASE + '/event/' + TEST_EVENT + '/roles/';
+        post_url  = API_BASE + '/event/' + SESSION_EVENT_PK + '/roles/';
         post_data = { 'needed_role' : new_needed_role };
 
         $.post( post_url, post_data, function( response, textStatus, jqXHR ) {
