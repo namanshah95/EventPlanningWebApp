@@ -38,13 +38,10 @@
         $args = func_get_args();
 
         $js_lookup_table = [
-            'jquery'               => '/ext/jquery-3.1.1.min.js',
-            'tinymce'              => '/ext/tinymce/tinymce.min.js',
             'pagination'           => '/ext/pagination.min.js',
             'featherlight'         => '/ext/featherlight.min.js',
             'featherlight-gallery' => '/ext/featherlight.gallery.min.js',
             'chosen'               => '/ext/chosen_v1.6.2/chosen.jquery.min.js',
-            'qtip'                 => '/ext/jquery.qtip.min.js'
         ];
 
         foreach( $args as $arg )

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -32,6 +31,7 @@
 
     <link rel="stylesheet" type="text/css" href="/pagination.css" />
     <link rel="stylesheet" type="text/css" href="/featherlight.min.css" />
+    <link rel="stylesheet" type="text/css" href="/chosen.min.css" />
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -46,7 +46,7 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <script src="/planner/js/guest.js"></script>
-    <? js_include( 'pagination', 'featherlight', 'error.js', 'pagination_lib.js' ); ?>
+    <? js_include( 'pagination', 'featherlight', 'chosen', 'error.js', 'pagination_lib.js' ); ?>
 
 </head>
 
