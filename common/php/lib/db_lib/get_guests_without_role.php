@@ -4,7 +4,7 @@
         $eventPK = $_REQUEST['event'];
         $rolePK  = $_REQUEST['role'];
 
-        $dataURL            = "http://planmything.tech/api/event/$eventPK/guests/";
+        $dataURL            = "{$GLOBALS[API_BASE]}/event/$eventPK/guests/";
         $data               = get_http_json( $dataURL );
         $entities_with_role = [];
 
@@ -21,7 +21,7 @@
             if( !in_array( $record['entity'], $entities_with_role ) )
             {
                 $entity        = $record['entity'];
-                $entityDataURL = "http://planmything.tech/api/entities/$entity";
+                $entityDataURL = "{$GLOBALS[API_BASE]}/entities/$entity";
                 $entityData    = get_http_json( $entityDataURL );
 
                 $record['entity_name'] = $entityData['Name'];

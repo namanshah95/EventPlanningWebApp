@@ -6,7 +6,7 @@
             $eventPK = $_REQUEST['event'];
             $rolePK  = $_REQUEST['role'];
 
-            $dataURL = "{$this->apiBase}/event/$eventPK/guests/?role=$rolePK&limit={$this->limit}&offset={$this->offset}";
+            $dataURL = "{$GLOBALS[API_BASE]}/event/$eventPK/guests/?role=$rolePK&limit={$this->limit}&offset={$this->offset}";
             $data    = get_http_json( $dataURL );
 
             // Avoid a second API lookup if we can avoid it
@@ -16,7 +16,7 @@
             foreach( $data as &$record )
             {
                 $entity        = $record['entity'];
-                $entityDataURL = "{$this->apiBase}/entities/$entity";
+                $entityDataURL = "{$GLOBALS[API_BASE]}/entities/$entity";
                 $entityData    = get_http_json( $entityDataURL );
 
                 $record['entity_name'] = $entityData['Name'];

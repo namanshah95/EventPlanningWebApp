@@ -4,7 +4,7 @@
     $event = $_REQUEST['event'];
     $role  = $_REQUEST['needed_role'];
 
-    $data = get_http_json( "http://planmything.tech/api/event/$event/roles/$role" );
+    $data = get_http_json( "{$GLOBALS[API_BASE]}/event/$event/roles/$role" );
 
     if( !empty( $data ) )
         $estimated_expenses = $data['estimated_budget'];

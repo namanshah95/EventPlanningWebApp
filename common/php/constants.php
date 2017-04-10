@@ -1,10 +1,14 @@
 <?
+    $__sql_hostname = getenv( 'EVENT_PLANNER_PRODUCTION' )
+              ? 'localhost'
+              : 'planmything.tech';
+
     // SQL
-    define( 'PSQL_HOST',           'planmything.tech' );
-    define( 'PSQL_PORT',           '5432'             );
-    define( 'PSQL_DB'  ,           'planmyth_dev'     );
-    define( 'PSQL_USER',           'planmyth_user'    );
-    define( 'PSQL_PASSWORD',       'EsVNg4EGuk'       ); // We are super fucking secure here lmao
+    define( 'PSQL_HOST',           $__sql_hostname );
+    define( 'PSQL_PORT',           '5432'          );
+    define( 'PSQL_DB'  ,           'planmyth_dev'  );
+    define( 'PSQL_USER',           'planmyth_user' );
+    define( 'PSQL_PASSWORD',       'EsVNg4EGuk'    ); // We are super fucking secure here lmao
     define( 'PSQL_CONNECT_STRING', ' host='     . constant( 'PSQL_HOST' )
                                  . ' port='     . constant( 'PSQL_PORT' )
                                  . ' dbname='   . constant( 'PSQL_DB' )
@@ -28,4 +32,6 @@
     // Globals
     define( 'WEBROOT',   'webroot'   );
     define( 'DB_HANDLE', 'db_handle' );
+    define( 'HOSTNAME',  'hostname'  );
+    define( 'API_BASE',  'api_base'  );
 ?>

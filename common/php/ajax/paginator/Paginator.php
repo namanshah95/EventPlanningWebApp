@@ -20,9 +20,6 @@
                           : 0;
 
             $this->requestData = $requestData;
-
-            $this->apiBase = "http://planmything.tech/api";
-            // $this->apiBase = $GLOBALS['webroot']/api;
         }
 
         abstract protected function getData();

@@ -65,7 +65,7 @@ function send_update_event_entity_roles_request( event )
 
     $.ajax( {
         'type'     : 'PUT',
-        'url'      : 'http://planmything.tech/api/event/' + event_pk + '/roles/' + needed_role_pk,
+        'url'      : API_BASE + '/event/' + event_pk + '/roles/' + needed_role_pk,
         'data'     : estimated_expenses,
         'dataType' : 'json'
     })
@@ -81,7 +81,7 @@ function send_update_event_entity_roles_request( event )
 
         $.ajax( {
             'type'     : 'PUT',
-            'url'      : 'http://planmything.tech/api/event/' + event_pk + '/entities/' + entity + '/roles/' + needed_role_pk,
+            'url'      : API_BASE + '/event/' + event_pk + '/entities/' + entity + '/roles/' + needed_role_pk,
             'data'     : data,
             'dataType' : 'json'
         })

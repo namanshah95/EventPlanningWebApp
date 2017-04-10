@@ -78,11 +78,11 @@ function purge_role( tr, needed_role )
 
     $.ajax( {
         'type'     : 'DELETE',
-        'url'      : 'http://planmything.tech/api/event/' + TEST_EVENT + '/roles/' + needed_role,
+        'url'      : API_BASE + '/event/' + TEST_EVENT + '/roles/' + needed_role,
         'dataType' : 'json'
     });
 
-    var get_url = 'http://planmything.tech/api/event/' + TEST_EVENT + '/guests/?role=' + needed_role;
+    var get_url = API_BASE + '/event/' + TEST_EVENT + '/guests/?role=' + needed_role;
     var entities = [];
 
     $.get( get_url, null, function( response, textStatus, jqXHR ) {
@@ -94,7 +94,7 @@ function purge_role( tr, needed_role )
     {
         $.ajax( {
             'type'     : 'DELETE',
-            'url'      : 'http://planmything.tech/api/event/' + TEST_EVENT + '/guests/' + entity + '/roles/' + needed_role,
+            'url'      : API_BASE + '/event/' + TEST_EVENT + '/guests/' + entity + '/roles/' + needed_role,
             'dataType' : 'json'
         });
     }
@@ -127,7 +127,7 @@ function populate_task_list_table( data, pagination )
 function create_new_role()
 {
     var new_name  = $( '#new_name' ).val();
-    var post_url  = 'http://planmything.tech/api/roles/';
+    var post_url  = API_BASE + '/roles/';
     var post_data = { 'name' : new_name };
 
     var new_needed_role;
@@ -138,7 +138,7 @@ function create_new_role()
         console.log( new_needed_role );
     })
     .done( function() {
-        post_url  = 'http://planmything.tech/api/event/' + TEST_EVENT + '/roles/';
+        post_url  = API_BASE + '/event/' + TEST_EVENT + '/roles/';
         post_data = { 'needed_role' : new_needed_role };
 
         $.post( post_url, post_data, function( response, textStatus, jqXHR ) {
@@ -167,7 +167,7 @@ function perform_edit_task_update()
     var post_data = { 'role' : role_pk };
 
     edit_task_assigned.forEach( function( entity ) {
-        var post_url = 'http://planmything.tech/api/event/' + event_pk + '/entities/' + entity + '/roles/';
+        var post_url = API_BASE + '/event/' + event_pk + '/entities/' + entity + '/roles/';
 
         $.post( post_url, post_data, function( response, textStatus, jqXHR ) {
             console.log( response['event_entity_role'] );
@@ -177,7 +177,7 @@ function perform_edit_task_update()
     edit_task_unassigned.forEach( function( entity ) {
         $.ajax( {
             'type'     : 'DELETE',
-            'url'      : 'http://planmything.tech/api/event/' + event_pk + '/guests/' + entity + '/roles/' + role_pk,
+            'url'      : API_BASE + '/event/' + event_pk + '/guests/' + entity + '/roles/' + role_pk,
             'dataType' : 'json'
         })
         .fail( function() {
