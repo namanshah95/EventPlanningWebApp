@@ -114,43 +114,43 @@ function populate_guest_list_table( data, pagination )
     add_new_row();
 }
 
-// function create_new_guest()
-// {
-//     var new_name  = $( '#new_name' ).val();
-//     var post_url  = API_BASE + '/roles/';
-//     var post_data = { 'name' : new_name };
+function create_new_guest()
+{
+    // var new_name  = $( '#new_name' ).val();
+    // var post_url  = API_BASE + '/roles/';
+    // var post_data = { 'name' : new_name };
 
-//     var new_needed_role;
-//     var new_event_needed_role;
+    // var new_needed_role;
+    // var new_event_needed_role;
 
-//     $.post( post_url, post_data, function( response, textStatus, jqXHR ) {
-//         new_needed_role = response['role'];
-//         console.log( new_needed_role );
-//     })
-//     .done( function() {
-//         post_url  = API_BASE + '/event/' + SESSION_EVENT_PK + '/roles/';
-//         post_data = { 'needed_role' : new_needed_role };
+    // $.post( post_url, post_data, function( response, textStatus, jqXHR ) {
+    //     new_needed_role = response['role'];
+    //     console.log( new_needed_role );
+    // })
+    // .done( function() {
+    //     post_url  = API_BASE + '/event/' + SESSION_EVENT_PK + '/roles/';
+    //     post_data = { 'needed_role' : new_needed_role };
 
-//         $.post( post_url, post_data, function( response, textStatus, jqXHR ) {
-//             new_event_needed_role = response['event_needed_role'];
-//             console.log( new_event_needed_role );
-//         });
-//     });
+    //     $.post( post_url, post_data, function( response, textStatus, jqXHR ) {
+    //         new_event_needed_role = response['event_needed_role'];
+    //         console.log( new_event_needed_role );
+    //     });
+    // });
 
-//     var new_row = $( '#new' );
-//     new_row.empty();
+    // var new_row = $( '#new' );
+    // new_row.empty();
 
-//     var task_name = $( '<td>' ).text( new_name );
-//     var actions   = create_action_set( new_row, new_event_needed_role, new_needed_role );
+    // var task_name = $( '<td>' ).text( new_name );
+    // var actions   = create_action_set( new_row, new_event_needed_role, new_needed_role );
 
-//     new_row.append(
-//         task_name,
-//         actions
-//     );
+    // new_row.append(
+    //     task_name,
+    //     actions
+    // );
 
-//     new_row.removeAttr( 'id' );
-//     add_new_row();
-// }
+    // new_row.removeAttr( 'id' );
+    // add_new_row();
+}
 
 // function perform_edit_task_update()
 // {
