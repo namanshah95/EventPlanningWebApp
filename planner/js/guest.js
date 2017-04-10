@@ -1,19 +1,17 @@
 $( document ).ready( guest_initialize );
 
-var TEST_EVENT = 44; // TODO remove this hard-coded test value
-
-var class_file = "GetEventGuestsPaginator";
-var args       = {
-    'event' : TEST_EVENT
-};
-
-var limit = 15;
-
 // var edit_task_unassigned = new Set();
 // var edit_task_assigned   = new Set();
 
 function guest_initialize()
 {
+    var class_file = "GetEventGuestsPaginator";
+    var args       = {
+        'event' : SESSION_EVENT_PK
+    };
+
+    var limit = 15;
+
     pagination_init(
         $( '#guest_pagination_controls' ),
         class_file,
@@ -93,13 +91,11 @@ function guest_initialize()
 
 function populate_guest_list_table( data, pagination )
 {
-    console.log("h");
     var guest_list_tbody = $( '#guest_list_tbody' );
 
     guest_list_tbody.empty();
 
     $.each( data, function( i, event_entity_role ) {
-        document.write(5);
         var event_entity_role_pk = event_entity_role['event_entity_role'];
         var row                  = $( '<tr>' );
 

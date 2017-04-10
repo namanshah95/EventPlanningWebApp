@@ -7,7 +7,7 @@
 <ul class="nav navbar-top-links navbar-right">
     <li>
         <b>
-            <? if( SessionLib::get( 'event.pk' ) !== null ): ?>
+            <? if( SessionLib::get( 'event.pk' ) !== -1 ): ?>
                 <span>On Event: <?= SessionLib::get( 'event.name' ) ?></span>
             <? else: ?>
                 <span style="color: red"><b>Choose An Event &#x21E8</b></span>

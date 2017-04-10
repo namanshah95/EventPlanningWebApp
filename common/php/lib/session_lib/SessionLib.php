@@ -121,6 +121,11 @@
                     SessionLib::set( 'user_entity.Email', $entity['Email']   );
                 }
 
+                $sessionEvent = self::get( 'event.pk' );
+
+                if( $sessionEvent === null )
+                    self::set( 'event.pk', -1 );
+
                 return true;
             }
             else
