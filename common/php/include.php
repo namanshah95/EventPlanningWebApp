@@ -6,7 +6,7 @@
         foreach( $args as $arg )
             require_once( "{$GLOBALS[WEBROOT]}/common/php/lib/$arg.php" );
     }
-    
+
     /*
      * Includes a db_lib function.
      *
@@ -23,7 +23,7 @@
         foreach( $args as $arg )
             require_once( "{$GLOBALS[WEBROOT]}/common/php/lib/db_lib/$arg.php" );
 	}
-	
+
     /*
      * Includes a Javascript plugin.
      *
@@ -54,5 +54,10 @@
 
             echo "<script src=\"/common/js/$arg\"></script>";
         }
+    }
+
+    function ui_insert( $ui_element )
+    {
+        require( "{$GLOBALS[WEBROOT]}/ui/$ui_element.php" );
     }
 ?>
