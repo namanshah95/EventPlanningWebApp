@@ -30,7 +30,7 @@ SQL;
             'created'
         ];
 
-        $order  = ' order by ';
+        $order  = '';
         $limit  = '';
         $offset = '';
 
@@ -41,7 +41,7 @@ SQL;
             elseif( $name == 'offset' )
                 $offset = " offset $value ";
             elseif( $name == 'order_by' )
-                $order .= $value;
+                $order = " order by $value ";
             else
             {
                 if( !in_array( $name, array_keys( $valid_fields ) ) )

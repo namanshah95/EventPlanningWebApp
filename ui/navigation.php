@@ -11,7 +11,10 @@
     </div>
     <!-- /.navbar-header -->
 
-    <? ui_insert( 'navbar_top_links' ); ?>
+    <?
+        if( is_logged_in() )
+            ui_insert( 'navbar_top_links' );
+    ?>
 
     <? ui_insert( 'sidebar' ); ?>
 </nav>

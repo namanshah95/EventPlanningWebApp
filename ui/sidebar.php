@@ -9,15 +9,17 @@
                 <li>
                     <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                 </li>
-                <li>
-                    <a href="guest.php"><i class="fa fa-user fa-fw"></i> Guest</a>
-                </li>
-                <li>
-                    <a href="task.php"><i class="fa fa-tasks fa-fw"></i> Task Manager</a>
-                </li>
-                <li>
-                    <a href="budget.php"><i class="fa fa-money fa-fw"></i> Budget Manager</a>
-                </li>
+                <? if( SessionLib::get( 'event.pk' ) !== -1 ): ?>
+                    <li>
+                        <a href="guest.php"><i class="fa fa-user fa-fw"></i> Guest List</a>
+                    </li>
+                    <li>
+                        <a href="task.php"><i class="fa fa-tasks fa-fw"></i> Task Manager</a>
+                    </li>
+                    <li>
+                        <a href="budget.php"><i class="fa fa-money fa-fw"></i> Budget Manager</a>
+                    </li>
+                <? endif; ?>
                 <li>
                     <a href="messages.php"><i class="fa fa-commenting-o fa-fw"></i> Messages</a>
                 </li>
