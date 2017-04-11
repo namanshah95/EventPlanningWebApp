@@ -5,7 +5,7 @@ function event_list_initialize()
     pagination_init(
         $( '#event_list_pagination_controls' ),
         'GetEventsPaginator',
-        [],
+        { 'order_by' : 'start_date' },
         15,
         populate_event_table
     );

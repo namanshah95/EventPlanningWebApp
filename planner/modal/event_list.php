@@ -1,4 +1,6 @@
+<link rel="stylesheet" type="text/css" href="/pagination.css" />
 <script src="/planner/js/modal/event_list.js"></script>
+<? js_include( 'pagination', 'error.js', 'pagination_lib.js' ); ?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6" style="width:100%">

@@ -16,6 +16,8 @@ function guest_initialize()
         limit,
         populate_guest_list_table
     );
+
+    add_new_row();
 }
 
 function add_new_row()
@@ -100,8 +102,6 @@ function populate_guest_list_table( data, pagination )
 
         guest_list_tbody.append( row );
     });
-
-    add_new_row();
 }
 
 function create_new_guest()

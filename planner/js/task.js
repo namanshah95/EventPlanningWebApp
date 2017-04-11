@@ -19,6 +19,8 @@ function task_initialize()
         limit,
         populate_task_list_table
     );
+
+    add_new_row();
 }
 
 function add_new_row()
@@ -118,8 +120,6 @@ function populate_task_list_table( data, pagination )
 
         task_list_tbody.append( row );
     });
-
-    add_new_row();
 }
 
 function create_new_role()
