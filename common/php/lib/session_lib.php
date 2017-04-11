@@ -2,7 +2,7 @@
     require_once( "{$GLOBALS[WEBROOT]}/common/php/lib/session_lib/SessionLib.php" );
     require_once( "{$GLOBALS[WEBROOT]}/common/php/lib/session_lib/EventPlannerSessionHandler.php" );
 
-    db_include( 'get_entity_by_login_credentials' );
+    db_include( 'get_entity_by_ext_firebase_id' );
 
     function set_session_save_handler()
     {
@@ -21,9 +21,9 @@
         return SessionLib::get( 'user_entity.entity' ) != -1;
     }
 
-    function login( $email, $password )
+    function login( $ext_firebase_id )
     {
-        $entity = get_entity_by_login_credentials( $email, $password );
+        $entity = get_entity_by_ext_firebase_id( $ext_firebase_id );
 
         if( is_array( $entity ) && count( $entity ) == 1 )
         {

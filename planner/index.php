@@ -57,7 +57,13 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">Home</h1>
                     </div>
-                    <h2>Welcome to Event Planning!</h2>
+                    <h2>
+                        <? if( is_logged_in() ): ?>
+                            Welcome, <?= SessionLib::get( 'user_entity.Name' ) ?>!
+                        <? else: ?>
+                            Welcome to PlanMyThing!
+                        <? endif; ?>
+                    </h2>
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->

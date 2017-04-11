@@ -1,10 +1,3 @@
-$( document ).ready( navbar_top_links_initialize );
-
-function navbar_top_links_initialize()
-{
-    return;
-}
-
 function set_session_event( event_pk )
 {
     var url  = '/common/php/ajax/set_session_event.php';

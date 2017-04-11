@@ -116,7 +116,7 @@
                     self::set( 'user_entity.entity', -1 );
                 elseif( $sessionMember != -1 )
                 {
-                    $entity = json_decode( get_http( "{$GLOBALS['webroot']}/api/entities/$sessionMember" ), true );
+                    $entity = get_http_json( "{$GLOBALS[API_BASE]}/entities/$sessionMember" );
                     SessionLib::set( 'user_entity.Name',  $entity['Name'] );
                     SessionLib::set( 'user_entity.Email', $entity['Email']   );
                 }
