@@ -58,19 +58,21 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Please Sign Up</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" id="login_form">
+                        <form role="form" id="signup_form">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus id="email">
+                                    <input class="form-control" placeholder="Name" name="name" type="text" autofocus id="name">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" id="email">
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="" id="password">
                                 </div>
-                                <input type="submit" id="submit_login"></input></br>
-                                <a href="signup.php">New User? Sign Up Here</a>
+                                <input type="submit" id="submit_login"></input>
                             </fieldset>
                         </form>
                     </div>

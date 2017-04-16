@@ -36,6 +36,21 @@
         return false;
     }
 
+    function signup( $ext_firebase_id )
+    {
+        $entity = create_entity_by_ext_firebase_id( $ext_firebase_id );
+
+        if( is_array( $entity ) && count( $entity ) == 1 )
+        {
+            SessionLib::set( 'user_entity.entity', $entity['entity'] );
+            SessionLib::closeSession();
+
+            return true;
+        }
+
+        return false;
+    }
+
     function logout()
     {
         SessionLib::destroySession();
