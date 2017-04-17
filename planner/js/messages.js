@@ -1,4 +1,6 @@
+sender_name = "";
 $( document ).ready( messages_initialize );
+
 
 function messages_initialize()
 {
@@ -13,6 +15,32 @@ function messages_initialize()
     };
 
     firebase.initializeApp( config );
+    // Get event id
+    firebase.database().ref().child('messages').child('2').on("child_added", function(snapshot, prevKey) {
+        var side = "left";
+        var oppside = "right";
+        if (snapshot.val().Sender === firebase.auth().currentUser.uid) { 
+            side = "right";
+            oppside = "left";
+        }
+        var name = set_sender_name(snapshot.val().Sender);
+        var html = "";
+        html += '<li class="'+oppside+' clearfix">\n';
+        html += '<span class="chat-img pull-'+oppside+'">\n';
+        html += '<img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />\n';
+        html += '</span>\n';
+        html += '<div class="chat-body clearfix">\n';
+        html += '<div class="header">\n';
+        html += '<strong class="primary-font">'+name+'</strong>\n';
+        html += '<small class="pull-'+side+' text-muted">\n';
+        html += '<i class="fa fa-clock-o fa-fw"></i> 12 mins ago\n';
+        html += '</small>\n';
+        html += '</div>\n';
+        html += '<p>'+snapshot.val().Text+'</p>\n';
+        html += '</div>\n';
+        html += '</li>\n';
+        $("#chat-list").append(html);
+    });
 }
 
 function send_message(convo_id)
@@ -41,4 +69,10 @@ function send_message(convo_id)
         });
     }
     $( '#txt-chat' ).val("");
+}
+
+function set_sender_name(sender) {
+    firebase.database().ref().child("users").child(sender).once("value", function(snapshot) {
+        return snapshot.val().Name;
+    });
 }
