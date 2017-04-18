@@ -43,6 +43,9 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script type="text/javascript">
+        convoid = <?= SessionLib::get( 'event.pk' ) ?>
+    </script>
     <script src="/planner/js/messages.js"></script>
 
 </head>
@@ -98,7 +101,7 @@
                             </div>
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body" id="chat-panel">
                             <ul class="chat" id="chat-list">
                                 
                             </ul>
@@ -108,7 +111,7 @@
                             <div class="input-group">
                                 <input id="txt-chat" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                                 <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat" onclick=<?="send_message(".SessionLib::get( 'event.pk' ).")"?>>Send</button>
+                                    <button class="btn btn-warning btn-sm" id="btn-chat" onclick="send_message()">Send</button>
                                 </span>
                             </div>
                         </div>
